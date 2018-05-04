@@ -1,0 +1,13 @@
+[package]
+name = "rusddit"
+version = "0.1.0"
+authors = ["Tiago Nascimento <tiago@theosirian.com>"]
+
+[dependencies]
+clap = "2.31"
+termion = "1.5"
+reqwest = "0.8"
+slog = "2.2"
+slog-async = "2.3"
+slog-json = "2.2"
+hyper = "0.11"
