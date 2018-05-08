@@ -11,3 +11,6 @@ slog = "2.2"
 slog-async = "2.3"
 slog-json = "2.2"
 hyper = "0.11"
+
+[dependencies.rawr]
+path = "rawr/"
