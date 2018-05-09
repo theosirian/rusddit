@@ -62,9 +62,20 @@ fn main() {
     let mut stdout = stdout().into_raw_mode().unwrap();
     let stdin = stdin();
 
+    // BUILD USER AGENT STRING
+    let system_info = sys_info::os_release().unwrap();
+    let device_id = nanoid::simple();
+    let user_agent = format!(
+        "{sys}:{dev_id}:{version} (by /u/osirian and /u/gchicha)",
+        sys = system_info,
+        dev_id = device_id,
+        version = VERSION
+    );
+
+    // CREATE CLIENT
     let client = RedditClient::new(
-        "your user agent here",
-        ApplicationOnlyAuthenticator::new("pam5L9so0-c4mQ", "0123456789012345678901234"),
+        &user_agent,
+        ApplicationOnlyAuthenticator::new("pam5L9so0-c4mQ", &device_id),
     );
     let subreddit = client.subreddit("rust");
     let hot_listing = subreddit
